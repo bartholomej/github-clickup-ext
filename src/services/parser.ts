@@ -46,9 +46,10 @@ export const getUserNodeFromPrList = (element: Element): Element => {
   return user;
 }
 
+
 export const getPrStatusNodeOnList = (element: Element): Element => {
   const elem = element.querySelector('a.markdown-title ~ div');
-  const statusNode = Array.from(elem.querySelectorAll('a')).filter(x => x.textContent.includes('Approved') || x.textContent.includes('Review'))[0];
+  const statusNode = Array.from(elem.querySelectorAll('a')).filter(x => x.textContent.includes('Approved') || x.textContent.includes('Review') || x.textContent.includes('Changes requested'))[0];
   return statusNode;
 }
 
