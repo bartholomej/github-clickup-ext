@@ -35,3 +35,13 @@ export const getClickupIdFromBranchName = (title: string): string => {
     return null;
   }
 }
+
+export const getMyUserName = (): string => {
+  const meta = document.querySelector('meta[name="user-login"]');
+  return meta?.getAttribute('content') || null;
+}
+
+export const getUserNodeFromPrList = (element: Element): Element => {
+  const user = element.querySelector('a[data-hovercard-type="user"]');
+  return user;
+}

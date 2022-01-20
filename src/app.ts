@@ -8,7 +8,7 @@
  * @see https://github.com/bartholomej/github-clickup
  */
 
-import { getClickupIdFromBranchName, getClickupIdFromPrTitle, getPrBranch, getPrItems } from './services/parser';
+import { getClickupIdFromBranchName, getClickupIdFromPrTitle, getMyUserName, getPrBranch, getPrItems, getUserNodeFromPrList } from './services/parser';
 import { createClickupLinkForPrDetail, createClickupLinkForPrList } from './services/renderer';
 
 const githubClickup = () => {
@@ -16,6 +16,7 @@ const githubClickup = () => {
   const domain = url[2];
   const isPrList = url.pop() === 'pulls';
   const isPrPage = url[5] === 'pull';
+
   // List of PRs
   if (domain.includes('github.com')) {
     if (isPrList) {
@@ -25,9 +26,19 @@ const githubClickup = () => {
         const title = prItem.querySelector('.markdown-title').textContent;
         const clickupId = getClickupIdFromPrTitle(title);
 
+        const me = getMyUserName();
+        const prUser = getUserNodeFromPrList(prItem);
+
+        if (me) {
+          if (me === prUser?.textContent) {
+            prUser.classList.add('pr-list-me');
+          } else {
+            prUser.classList.add('pr-list-other');
+          }
+        }
+
         if (title && clickupId) {
           const elem = prItem.querySelector('a.markdown-title ~ div');
-
           createClickupLinkForPrList(elem, clickupId);
         }
       }
@@ -42,6 +53,5 @@ const githubClickup = () => {
     }
   }
 }
-
 
 export default githubClickup();
