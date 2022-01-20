@@ -3,3 +3,11 @@ $clickup-color: #7b68ee;
 a.clickup-link {
   // color: $clickup-color !important;
 }
+
+.clickup-link--detail {
+  background-color: $clickup-color !important;
+
+  a {
+    color: white;
+  }
+}

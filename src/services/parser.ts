@@ -9,11 +9,16 @@
  */
 
 export const getPrItems = (): Element[] => {
-  const titles = Array.from(document.querySelectorAll('.js-issue-row'));
-  return titles;
+  const prNodes = Array.from(document.querySelectorAll('.js-issue-row'));
+  return prNodes;
 }
 
-export const getClickupId = (title: string): string => {
+export const getPrBranch = (): Element => {
+  const branchNode = document.querySelector('.head-ref');
+  return branchNode;
+}
+
+export const getClickupIdFromPrTitle = (title: string): string => {
   const id = title.split(' ')[0].trim();
   if (id.length >= 4 && id.length <= 8 && !id.includes(':')) {
     return id.toLocaleLowerCase();
@@ -22,3 +27,11 @@ export const getClickupId = (title: string): string => {
   }
 }
 
+export const getClickupIdFromBranchName = (title: string): string => {
+  const id = title.split('-')[0].trim();
+  if (id.length >= 4 && id.length <= 8 && !id.includes(':')) {
+    return id.toLocaleLowerCase();
+  } else {
+    return null;
+  }
+}

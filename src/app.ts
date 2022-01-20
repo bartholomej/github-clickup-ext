@@ -8,26 +8,37 @@
  * @see https://github.com/bartholomej/github-clickup
  */
 
-import { getClickupId, getPrItems } from './services/parser';
-import { createClickupLink } from './services/renderer';
+import { getClickupIdFromBranchName, getClickupIdFromPrTitle, getPrBranch, getPrItems } from './services/parser';
+import { createClickupLinkForPrDetail, createClickupLinkForPrList } from './services/renderer';
 
 const githubClickup = () => {
   const url = window.location.href.split('/');
   const domain = url[2];
-  const page = url.pop();
+  const isPrList = url.pop() === 'pulls';
+  const isPrPage = url[5] === 'pull';
+  // List of PRs
+  if (domain.includes('github.com')) {
+    if (isPrList) {
+      const prItems = getPrItems();
 
-  if (domain.includes('github.') && page === 'pulls') {
-    const prItems = getPrItems();
+      for (const prItem of prItems) {
+        const title = prItem.querySelector('.markdown-title').textContent;
+        const clickupId = getClickupIdFromPrTitle(title);
 
-    for (const prItem of prItems) {
-      const title = prItem.querySelector('.markdown-title').textContent;
-      const clickupId = getClickupId(title);
+        if (title && clickupId) {
+          const elem = prItem.querySelector('a.markdown-title ~ div');
 
-      if (title && clickupId) {
-        const elem = prItem.querySelector('a.markdown-title ~ div');
-
-        createClickupLink(elem, clickupId);
+          createClickupLinkForPrList(elem, clickupId);
+        }
       }
+    }
+
+    // List of PRs
+    if (isPrPage) {
+      const prBranch = getPrBranch();
+      const clickupId = getClickupIdFromBranchName(prBranch?.textContent);
+
+      createClickupLinkForPrDetail(prBranch, clickupId);
     }
   }
 }
