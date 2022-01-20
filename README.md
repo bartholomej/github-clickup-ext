@@ -9,8 +9,8 @@
 
 ### Automatically (for humans)
 
-- **[Install for Chrome](https://chrome.google.com/webstore/detail/TODO)** from official **Chrome Web Store**
-- **[Install for Firefox](https://addons.mozilla.org/firefox/addon/TODO)** from official **Mozilla Addons**
+- **[Install for Chrome](https://chrome.google.com/webstore/detail/github-clickup/coehochbkjiikfgfaeobfgoedgmjidke)** from official **Chrome Web Store**
+- **Install for Firefox** coming soon!
 
 ### Manually (for ~~robots~~ developers)
 
