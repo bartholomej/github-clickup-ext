@@ -19,7 +19,8 @@ export const getPrBranch = (): Element => {
 }
 
 export const getClickupIdFromPrTitle = (title: string): string => {
-  const id = title.split(' ')[0].trim();
+  const idRaw = title.split(' ')[0].trim();
+  const id = idRaw?.split('#').length > 1 ? idRaw.split('#')[1] : idRaw;
   if (id.length >= 4 && id.length <= 8 && !id.includes(':')) {
     return id.toLocaleLowerCase();
   } else {
@@ -45,7 +46,6 @@ export const getUserNodeFromPrList = (element: Element): Element => {
   const user = element.querySelector('a[data-hovercard-type="user"]');
   return user;
 }
-
 
 export const getPrStatusNodeOnList = (element: Element): Element => {
   const elem = element.querySelector('a.markdown-title ~ div');

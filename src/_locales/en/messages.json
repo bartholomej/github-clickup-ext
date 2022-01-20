@@ -10,5 +10,9 @@
   "appContent": {
     "message": "Simple web extension for Github. This extension adds some cool features for ClickUp... This is unofficial, experimental, made for fun and it has nothing to do with Github ❤️ itself",
     "description": "Description content of the application, displayed in the web store. (Manually updated)"
+  },
+  "goToClickUp": {
+    "message": "Open ClickUp task",
+    "description": "Go to ClickUp button label"
   }
 }

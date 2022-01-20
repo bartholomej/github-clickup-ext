@@ -15,8 +15,9 @@ import { isPrApproved } from './services/utils';
 const githubClickup = () => {
   const url = window.location.href.split('/');
   const domain = url[2];
-  const isPrList = url.pop() === 'pulls';
-  const isPrPage = url[5] === 'pull';
+  const page = url[5].split('?')[0];
+  const isPrList = page === 'pulls';
+  const isPrPage = page === 'pull';
 
   // List of PRs
   if (domain.includes('github.com')) {
@@ -50,14 +51,10 @@ const higlightPrStatus = (item: Element): void => {
   const prStatusNode = getPrStatusNodeOnList(item);
   const isApproved = isPrApproved(prStatusNode?.textContent);
 
-  console.log(prStatusNode, isApproved);
-
-
-
   if (isApproved) {
-    prStatusNode.classList.add('pr-list-status-approved');
+    prStatusNode?.classList.add('pr-list-status-approved');
   } else {
-    prStatusNode.classList.add('pr-list-status-review');
+    prStatusNode?.classList.add('pr-list-status-review');
   }
 }
 
@@ -77,10 +74,11 @@ const highlighMyPrs = (item: Element): void => {
 
   if (me) {
     if (me === prUser?.textContent) {
-      prUser.classList.add('pr-list-me');
+      prUser?.classList.add('pr-list-me');
     } else {
-      prUser.classList.add('pr-list-other');
+      prUser?.classList.add('pr-list-other');
     }
   }
 }
+
 export default githubClickup();
