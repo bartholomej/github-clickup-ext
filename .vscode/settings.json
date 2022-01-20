@@ -1,0 +1,17 @@
+{
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#b01"
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["/manifest*.json"],
+      "url": "http://json.schemastore.org/chrome-manifest"
+    }
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

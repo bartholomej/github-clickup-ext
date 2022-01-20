@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "Github + ClickUp = ❤️",
+    "description": "Title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Github + ClickUp",
+    "description": "Description of the application, displayed in the web store."
+  },
+  "appContent": {
+    "message": "Simple web extension for Github. This extension adds some cool features for ClickUp... This is unofficial, experimental, made for fun and it has nothing to do with Github ❤️ itself",
+    "description": "Description content of the application, displayed in the web store. (Manually updated)"
+  }
+}
