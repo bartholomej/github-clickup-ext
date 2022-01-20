@@ -1,12 +1,12 @@
 {
   "appName": {
-    "message": "Github + ClickUp = ❤️"
+    "message": "Github ❤️ ClickUp"
   },
   "appDesc": {
-    "message": "Jednoduché rozšíření pro Github, které propojuje některé funkce s ClickUpem"
+    "message": "Jednoduché rozšíření,které propojuje Github funkce s ClickUpem"
   },
   "appContent": {
-    "message": "Jednoduché rozšíření pro Github, které propojuje některé funkce s ClickUpem"
+    "message": "Jednoduché rozšíření,které propojuje Github funkce s ClickUpem"
   },
   "goToClickUp": {
     "message": "Otevřít ClickUp task"
