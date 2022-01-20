@@ -45,3 +45,10 @@ export const getUserNodeFromPrList = (element: Element): Element => {
   const user = element.querySelector('a[data-hovercard-type="user"]');
   return user;
 }
+
+export const getPrStatusNodeOnList = (element: Element): Element => {
+  const elem = element.querySelector('a.markdown-title ~ div');
+  const statusNode = Array.from(elem.querySelectorAll('a')).filter(x => x.textContent.includes('Approved') || x.textContent.includes('Review'))[0];
+  return statusNode;
+}
+

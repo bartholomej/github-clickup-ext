@@ -8,8 +8,9 @@
  * @see https://github.com/bartholomej/github-clickup
  */
 
-import { getClickupIdFromBranchName, getClickupIdFromPrTitle, getMyUserName, getPrBranch, getPrItems, getUserNodeFromPrList } from './services/parser';
+import { getClickupIdFromBranchName, getClickupIdFromPrTitle, getMyUserName, getPrBranch, getPrItems, getPrStatusNodeOnList, getUserNodeFromPrList } from './services/parser';
 import { createClickupLinkForPrDetail, createClickupLinkForPrList } from './services/renderer';
+import { isPrApproved } from './services/utils';
 
 const githubClickup = () => {
   const url = window.location.href.split('/');
@@ -23,28 +24,18 @@ const githubClickup = () => {
       const prItems = getPrItems();
 
       for (const prItem of prItems) {
-        const title = prItem.querySelector('.markdown-title').textContent;
-        const clickupId = getClickupIdFromPrTitle(title);
+        // Highlight my PRs
+        highlighMyPrs(prItem);
 
-        const me = getMyUserName();
-        const prUser = getUserNodeFromPrList(prItem);
+        // Add ClickUp link
+        addClickupLink(prItem);
 
-        if (me) {
-          if (me === prUser?.textContent) {
-            prUser.classList.add('pr-list-me');
-          } else {
-            prUser.classList.add('pr-list-other');
-          }
-        }
-
-        if (title && clickupId) {
-          const elem = prItem.querySelector('a.markdown-title ~ div');
-          createClickupLinkForPrList(elem, clickupId);
-        }
+        // PR status
+        higlightPrStatus(prItem);
       }
     }
 
-    // List of PRs
+    // Detail of PR
     if (isPrPage) {
       const prBranch = getPrBranch();
       const clickupId = getClickupIdFromBranchName(prBranch?.textContent);
@@ -54,4 +45,42 @@ const githubClickup = () => {
   }
 }
 
+
+const higlightPrStatus = (item: Element): void => {
+  const prStatusNode = getPrStatusNodeOnList(item);
+  const isApproved = isPrApproved(prStatusNode?.textContent);
+
+  console.log(prStatusNode, isApproved);
+
+
+
+  if (isApproved) {
+    prStatusNode.classList.add('pr-list-status-approved');
+  } else {
+    prStatusNode.classList.add('pr-list-status-review');
+  }
+}
+
+const addClickupLink = (item: Element): void => {
+  const title = item.querySelector('.markdown-title').textContent;
+  const clickupId = getClickupIdFromPrTitle(title);
+
+  if (title && clickupId) {
+    const elem = item.querySelector('a.markdown-title ~ div');
+    createClickupLinkForPrList(elem, clickupId);
+  }
+}
+
+const highlighMyPrs = (item: Element): void => {
+  const me = getMyUserName();
+  const prUser = getUserNodeFromPrList(item);
+
+  if (me) {
+    if (me === prUser?.textContent) {
+      prUser.classList.add('pr-list-me');
+    } else {
+      prUser.classList.add('pr-list-other');
+    }
+  }
+}
 export default githubClickup();

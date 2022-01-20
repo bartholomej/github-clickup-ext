@@ -21,3 +21,11 @@ a.pr-list-other {
   color: white;
   padding: 5px;
 }
+
+a.pr-list-status-approved {
+  color: var(--color-btn-primary-bg) !important;
+}
+
+a.pr-list-status-review {
+  color: var(--color-primer-border-active) !important;
+}
