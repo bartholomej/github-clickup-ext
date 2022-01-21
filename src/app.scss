@@ -1,8 +1,8 @@
 $clickup-color: #7b68ee;
 
-a.clickup-link {
-  // color: $clickup-color !important;
-}
+// a.clickup-link {
+//   // color: $clickup-color !important;
+// }
 
 .clickup-link--detail {
   background-color: $clickup-color !important;
@@ -17,8 +17,8 @@ a.pr-list-me {
 }
 
 a.pr-list-other {
-  background: black;
-  color: white !important;
+  background: var(--color-attention-subtle);
+  color: var(--color-attention-fg) !important;
   padding: 3px;
 }
 
