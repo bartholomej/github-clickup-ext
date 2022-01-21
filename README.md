@@ -1,9 +1,11 @@
 [![taylor swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
-# Github ❤️ ClickUp
+# Github ❤️ ClickUp web extension
 
-> Simple Chrome extension for **Github**
+> Chrome extension which integrates Github with ClickUp so you can move faster between task and pull request
+
+![Demo animation](https://github.com/bartholomej/github-clickup-ext/blob/master/_assets/webstore.png?raw=true)
 
 ## Installation
 
@@ -36,25 +38,27 @@ Load your extension on Chrome following:
 - `yarn run build:opera`
 - `yarn run build:edge`
 
-## Contribution
+## 🤝 Contribution
 
 I welcome you to customize this according to your needs ;)
 
 Pull requests for any improvements would be great!
 
-## Privacy Policy
+## 🕵️ Privacy Policy
 
 I DO NOT STORE ANY DATA. PERIOD.
 
 I physically can't. I have nowhere to store it. I don't even have a server database to store it. So even if Justin Bieber asked nicely to see your data, I wouldn't have anything to show him.
 
-That's why, with this EXTENSION, what happens on your device stays on your device till disappear.
+That's why, with this extension, what happens on your device stays on your device till disappear.
 
-## Donation
+## ⭐️ Show your support
 
-If this project have helped you save time please consider [making a donation](https://github.com/sponsors/bartholomej) for some 🍺 or 🍵 ;)
+Give a ⭐️ if this project helped you!
 
-## License
+Or if you are brave enough consider [making a donation](https://github.com/sponsors/bartholomej) for some 🍺 or 🍵 ;)
+
+## 📝 License
 
 Copyright &copy; 2022 [Bartholomej](http://github.com/bartholomej)
 
