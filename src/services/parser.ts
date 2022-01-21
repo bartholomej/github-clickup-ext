@@ -8,6 +8,8 @@
  * @see https://github.com/bartholomej/github-clickup
  */
 
+import { checkClickupId, stripHash } from "./utils";
+
 export const getPrItems = (): Element[] => {
   const prNodes = Array.from(document.querySelectorAll('.js-issue-row'));
   return prNodes;
@@ -19,18 +21,23 @@ export const getPrBranch = (): Element => {
 }
 
 export const getClickupIdFromPrTitle = (title: string): string => {
-  const idRaw = title.split(' ')[0].trim();
-  const id = idRaw?.split('#').length > 1 ? idRaw.split('#')[1] : idRaw;
-  if (id.length >= 4 && id.length <= 8 && !id.includes(':')) {
-    return id.toLocaleLowerCase();
+  const wordsInTitle = title.split(' ');
+  const hashId = wordsInTitle.find((word) => word.startsWith('#') && checkClickupId(word));
+
+  if (hashId) {
+    return stripHash(hashId).toLocaleLowerCase();
   } else {
-    return null;
+    const firstWord = wordsInTitle[0].trim();
+    if (checkClickupId(firstWord)) {
+      return firstWord.toLocaleLowerCase();
+    }
   }
+  return null;
 }
 
 export const getClickupIdFromBranchName = (title: string): string => {
   const id = title.split('-')[0].trim();
-  if (id.length >= 4 && id.length <= 8 && !id.includes(':')) {
+  if (checkClickupId(id)) {
     return id.toLocaleLowerCase();
   } else {
     return null;

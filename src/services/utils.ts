@@ -17,3 +17,13 @@ export const isPrApproved = (status: string): boolean => {
   }
   return false;
 }
+
+export const checkClickupId = (idRaw: string): boolean => {
+  if (idRaw?.length >= 4 && idRaw.length <= 8 && !idRaw.includes(':')) {
+    return true;
+  }
+  return false;
+}
+export const stripHash = (idRaw: string): string => {
+  return idRaw?.split('#').length > 1 ? idRaw.split('#')[1] : idRaw;
+}
