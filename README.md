@@ -12,7 +12,7 @@
 ### Automatically (for humans)
 
 - **[Install for Chrome](https://chrome.google.com/webstore/detail/github-clickup/coehochbkjiikfgfaeobfgoedgmjidke)** from official **Chrome Web Store**
-- **Install for Firefox** coming soon!
+- **[Install for Firefox](https://addons.mozilla.org/cs/firefox/addon/github-clickup/)** from official **Mozilla Addons**!
 
 ### Manually (for ~~robots~~ developers)
 
