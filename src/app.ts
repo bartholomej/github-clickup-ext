@@ -15,7 +15,7 @@ import { isPrApproved } from './services/utils';
 const githubClickup = () => {
   const url = window.location.href.split('/');
   const domain = url[2];
-  const page = url[5].split('?')[0];
+  const page = url[5]?.split('?')[0];
   const isPrList = page === 'pulls';
   const isPrPage = page === 'pull';
 
