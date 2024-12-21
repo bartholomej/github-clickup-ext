@@ -18,7 +18,7 @@ export const isPrApproved = (status: string): boolean => {
 }
 
 export const checkClickupId = (idRaw: string): boolean => {
-  return idRaw?.length >= 4 && idRaw.length <= 8 && CLICKUP_REGEX.test(idRaw);
+  return idRaw?.length >= 4 && idRaw.length <= 10 && CLICKUP_REGEX.test(idRaw);
 }
 
 export const stripHash = (idRaw: string): string => {

@@ -10,28 +10,23 @@
 
 export const createClickupLinkForPrList = (element: Element, clickupId: string): void => {
   const href = `https://app.clickup.com/t/${clickupId}`;
-  const lastLink = element.lastElementChild;
-  if (lastLink) {
-    const nodeToAppend = lastLink.cloneNode(true) as Element;
-    const a = nodeToAppend.querySelector('a');
-    if (a) {
-      a.href = href;
-      a.textContent = clickupId;
-      a.target = '_blank';
-      a.ariaLabel = chrome.i18n.getMessage('goToClickUp') + ' #' + clickupId;
-      a.classList.add('clickup-link');
+  const a = document.createElement('a');
 
-      element.appendChild(nodeToAppend);
-    }
-  }
+  a.href = href;
+  a.textContent = clickupId;
+  a.target = '_blank';
+  a.ariaLabel = chrome.i18n.getMessage('goToClickUp') + ' #' + clickupId;
+  a.classList.add('clickup-link');
+
+  element.insertAdjacentElement('afterend', a);
 }
-
 
 export const createClickupLinkForPrDetail = (element: Element, clickupId: string): void => {
   const href = `https://app.clickup.com/t/${clickupId}`;
   const nodeToAppend = element.cloneNode(true) as Element;
 
   const a = nodeToAppend.querySelector('a');
+
   if (a) {
     a.href = href;
     a.textContent = clickupId;

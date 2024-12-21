@@ -59,12 +59,11 @@ const higlightPrStatus = (item: Element): void => {
 }
 
 const addClickupLink = (item: Element): void => {
-  const title = item.querySelector('.markdown-title').textContent;
-  const clickupId = getClickupIdFromPrTitle(title);
+  const title = item.querySelector('.markdown-title');
+  const clickupId = getClickupIdFromPrTitle(title.textContent);
 
-  if (title && clickupId) {
-    const elem = item.querySelector('a.markdown-title ~ div');
-    createClickupLinkForPrList(elem, clickupId);
+  if (title.textContent && clickupId) {
+    createClickupLinkForPrList(title, clickupId);
   }
 }
 

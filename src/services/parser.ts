@@ -36,7 +36,8 @@ export const getClickupIdFromPrTitle = (title: string): string => {
 }
 
 export const getClickupIdFromBranchName = (title: string): string => {
-  const id = title.split('-')[0].trim();
+  const id = title.split('-')[0].trim().split('/').at(-1);
+
   if (checkClickupId(id)) {
     return id.toLocaleLowerCase();
   } else {
