@@ -1,24 +1,33 @@
 {
   "chrome": {
+    "background": {
+      "service_worker": "background.bundle.js"
+    },
     "update_url": "https://clients2.google.com/service/update2/crx"
   },
   "firefox": {
-    "applications": {
-      "gecko": {
-        "strict_min_version": "54.0"
-      }
-    },
     "background": {
       "scripts": [
         "background.bundle.js"
       ]
     },
-    "manifest_version": 2
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "{b961b544-977d-4ccd-9812-619e31a671cd}",
+        "strict_min_version": "109.0"
+      }
+    }
   },
   "opera": {
+    "background": {
+      "service_worker": "background.bundle.js"
+    },
     "update_url": "https://extension-updates.opera.com/api/omaha/update/"
   },
   "edge": {
+    "background": {
+      "service_worker": "background.bundle.js"
+    },
     "author": "Bartholomej",
     "browser_specific_settings": {
       "edge": {
