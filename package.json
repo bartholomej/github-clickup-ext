@@ -1,6 +1,6 @@
 {
   "name": "github-clickup",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Github-clickup extension",
   "main": "src/app.js",
   "scripts": {
