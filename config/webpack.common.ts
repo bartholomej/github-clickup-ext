@@ -7,7 +7,7 @@ import { WebpackPlugin } from './webpack.interface';
 // tslint:disable:object-literal-sort-keys
 export const commonConfig: webpack.Configuration = {
   entry: {
-    app: ['./src/app.ts', './src/app.scss'],
+    app: ['./src/app.ts', './src/app.css'],
     background: './src/background.ts'
   },
   resolve: {
@@ -28,7 +28,7 @@ export const commonConfig: webpack.Configuration = {
       },
       {
         test: /\.s?css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       }
     ]
   },
